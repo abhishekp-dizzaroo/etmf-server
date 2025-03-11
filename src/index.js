@@ -8,13 +8,12 @@ const config = require('./config/config');
 const errorHandler = require('./middleware/errorHandler');
 
 // Import routes
-
 // const authRoutes = require('./routes/auth.routes');
 // const documentRoutes = require('./routes/document.routes');
 // const userRoutes = require('./routes/user.routes');
 // const healthRoutes = require('./routes/health.routes');
 const aiRoutes = require('./routes/ai.routes');
-
+const studyProtocolRoutes = require('./routes/studyProtocol.routes');
 
 const app = express();
 
@@ -30,16 +29,15 @@ app.use(express.json({ limit: config.maxFileSize }));
 app.use(express.urlencoded({ extended: true, limit: config.maxFileSize }));
 
 // Routes
-
 // app.use('/api/auth', authRoutes);
 // app.use('/api/documents', documentRoutes);
 // app.use('/api/users', userRoutes);
 // app.use('/api/health', healthRoutes);
 app.use('/api/ai', aiRoutes);
-
+app.use('/api/study-protocols', studyProtocolRoutes);
 
 // Error handling
-// app.use(errorHandler);
+app.use(errorHandler);
 
 // Database connection
 mongoose.connect(config.mongoUri)

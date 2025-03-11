@@ -1,9 +1,9 @@
 const express = require('express');
-const aiController = require('../controllers/ai.controller');
+const { getResult } = require('../controllers/ai.controller');
 
 const router = express.Router();
 
 // Route to get AI generation result
-router.post('/get-result', aiController.getResult);
+router.post('/get-result', getResult);
 
 module.exports = router;
