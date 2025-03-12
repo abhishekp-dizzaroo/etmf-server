@@ -49,7 +49,7 @@ const generateResult = async (context, prompt, result) => {
         prompt = "\nprompt : " + prompt;
 
         const fullPrompt = `${context} ${prompt}`;
-        console.log("Full Prompt:\n", fullPrompt); // Debugging
+        // console.log("Full Prompt:\n", fullPrompt); // Debugging
         
         // Use model.generateContent instead of chat.sendMessage
         const result = await model.generateContent(fullPrompt);

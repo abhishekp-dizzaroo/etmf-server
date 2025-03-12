@@ -14,6 +14,7 @@ const errorHandler = require('./middleware/errorHandler');
 // const healthRoutes = require('./routes/health.routes');
 const aiRoutes = require('./routes/ai.routes');
 const studyProtocolRoutes = require('./routes/studyProtocol.routes');
+const documentEditorRoutes = require('./routes/documentEditor.routes');
 
 const app = express();
 
@@ -35,6 +36,7 @@ app.use(express.urlencoded({ extended: true, limit: config.maxFileSize }));
 // app.use('/api/health', healthRoutes);
 app.use('/api/ai', aiRoutes);
 app.use('/api/study-protocols', studyProtocolRoutes);
+app.use('/api/documentEditor', documentEditorRoutes);
 
 // Error handling
 app.use(errorHandler);
