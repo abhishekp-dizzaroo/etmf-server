@@ -21,8 +21,7 @@ const app = express();
 // Middleware
 app.use(helmet());
 app.use(cors({
-  origin: config.corsOrigin,
-  credentials: true
+  origin: '*'
 }));
 app.use(compression());
 app.use(morgan('dev'));
