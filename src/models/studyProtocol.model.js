@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 
 const clinicalStudySchema = new mongoose.Schema(
   {
@@ -70,6 +70,51 @@ const clinicalStudySchema = new mongoose.Schema(
       interim_analysis_planned: { type: Boolean },
       handling_of_missing_data: { type: String }
     },
+    site_operations: {
+      site_activation: {
+        planned_sites_count: { type: Number },
+        countries_involved: { type: String },
+        site_initiation_timeline: { type: String },
+        site_activation_strategy: { type: String }
+      },
+      monitoring_plan: {
+        monitoring_frequency: { type: String },
+        monitoring_type: { type: String, enum: ["on-site", "remote", "hybrid"] },
+        risk_based_monitoring: { type: Boolean, default: false },
+        central_monitoring: { type: Boolean, default: false }
+      }
+    },
+    document_management: {
+      filing_strategy: { type: String, enum: ["concurrent", "batch", "hybrid"] },
+      quality_control: {
+        qc_level: { type: String, enum: ["100", "risk-based", "sampling-based"] },
+        qc_frequency: { type: String },
+        automated_checks: { type: Boolean, default: false }
+      },
+      retention_period: { type: String },
+      archival_strategy: { type: String }
+    },
+    regulatory_compliance: {
+      submission_timeline: { type: String },
+      regulatory_authorities: { type: String },
+      ethics_committee_strategy: { type: String },
+      safety_reporting: {
+        reporting_timeline: { type: String },
+        safety_monitoring: { type: String }
+      }
+    },
+    vendor_management: {
+      cro_details: {
+        name: { type: String },
+        scope_of_work: { type: String },
+        oversight_plan: { type: String }
+      },
+      central_lab: {
+        name: { type: String },
+        services: { type: String }
+      },
+      other_vendors: { type: String }
+    },
     regulatory_ethical_requirements: {
       countries_for_submission: [{ type: String }],
       planned_start_date: { type: String, required: true },
@@ -91,4 +136,4 @@ const clinicalStudySchema = new mongoose.Schema(
 );
 
 const ClinicalStudy = mongoose.model("ClinicalStudy", clinicalStudySchema);
-export default ClinicalStudy;
+module.exports = ClinicalStudy;
