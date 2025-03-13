@@ -41,6 +41,10 @@ app.use('/api/documentEditor', documentEditorRoutes);
 // Error handling
 app.use(errorHandler);
 
+app.get('/', (req, res) => {
+  res.send('API is running...');
+});
+
 // Database connection
 mongoose.connect(config.mongoUri)
   .then(() => console.log('Connected to MongoDB'))
