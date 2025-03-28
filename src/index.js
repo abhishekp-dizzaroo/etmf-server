@@ -44,6 +44,9 @@ app.get('/', (req, res) => {
   res.send('API is running...');
 });
 
+app.get('/api', (req, res) => {
+  res.status(200).json({ status: 'OK' });
+});
 // Database connection
 mongoose.connect(config.mongoUri)
   .then(() => console.log('Connected to MongoDB'))
